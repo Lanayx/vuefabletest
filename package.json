@@ -9,7 +9,8 @@
   },
   "scripts": {
     "postinstall": "dotnet restore",
-    "build": "webpack",
+    "build": "cd tools && dotnet fable webpack -- -p --config tools/webpack.config.prod.js",
+    "start": "cd tools && dotnet fable webpack-dev-server -- --config tools/webpack.config.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
