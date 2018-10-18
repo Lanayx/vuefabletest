@@ -19,8 +19,8 @@ type MyData =
 
 let init() =
     let canvas = Browser.document.getElementsByTagName_canvas().[0]
-    canvas.width <- 1000.
-    canvas.height <- 800.
+    canvas.width <- 100.
+    canvas.height <- 80.
     let ctx = canvas.getContext_2d()
     // The (!^) operator checks and casts a value to an Erased Union type
     // See http://fable.io/docs/interacting.html#Erase-attribute
@@ -29,9 +29,10 @@ let init() =
     ctx.fillStyle <- !^"rgba(0, 0, 200, 0.5)"
     ctx.fillRect (30., 30., 55., 50.)
 
-    let extraOpts = %[
-        "el" => "#app"
-        "template" => "Hello {{ name }}" 
+    let extraOpts = createObj [
+        "el" ==> "#app"
+        // "template" ==> "<h1>Hello {{ name }}</h1>" 
+        "render" ==> fun(h) -> h "div" "zzz"  //fun (h) -> h("div", "ZZZ")
     ]
 
         // Now instantiate the type and create a Vue view model
